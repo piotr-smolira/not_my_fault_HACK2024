@@ -1,0 +1,280 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bldg: <file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology ;
+   owl:imports <https://brickschema.org/schema/1.3/Brick>
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://brickschema.org/schema/Brick#feeds
+brick:feeds rdf:type owl:AnnotationProperty .
+
+
+###  https://brickschema.org/schema/Brick#hasPart
+brick:hasPart rdf:type owl:AnnotationProperty .
+
+
+###  https://brickschema.org/schema/Brick#hasPoint
+brick:hasPoint rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#hasFault
+<http://www.co-ode.org/ontologies/ont.owl#hasFault> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain brick:Damper ;
+                                                    rdfs:range <http://www.co-ode.org/ontologies/ont.owl#Fault> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#StuckPosition
+<http://www.co-ode.org/ontologies/ont.owl#StuckPosition> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#Fault
+<http://www.co-ode.org/ontologies/ont.owl#Fault> rdf:type owl:Class ;
+                                                 rdfs:subClassOf brick:Class .
+
+
+###  https://brickschema.org/schema/Brick#Electricial_Meter
+brick:Electricial_Meter rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#Cooling_coil
+bldg:Cooling_coil rdf:type owl:NamedIndividual ,
+                           brick:Chilled_Water_Coil ;
+                  brick:hasPoint bldg:FCU_CLG_EWT ,
+                                 bldg:FCU_CLG_GPM ,
+                                 bldg:FCU_CLG_RWT ,
+                                 bldg:FCU_CVLV ,
+                                 bldg:FCU_CVLV_DM .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FAN_CTRL
+bldg:FAN_CTRL rdf:type owl:NamedIndividual ,
+                       brick:Mode_Command .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU
+bldg:FCU rdf:type owl:NamedIndividual ,
+                  brick:FCU ;
+         brick:feeds bldg:Zone ;
+         brick:hasPart bldg:Cooling_coil ,
+                       bldg:Heating_coil ,
+                       bldg:Outdoor_air_damper ,
+                       bldg:Supply_air_fan ;
+         brick:hasPoint bldg:FCU_CTRL ,
+                        bldg:FCU_DAT ,
+                        bldg:FCU_DA_CFM ,
+                        bldg:FCU_DA_HUMD ,
+                        bldg:FCU_MAT ,
+                        bldg:FCU_MA_HUMD ,
+                        bldg:FCU_OAT ,
+                        bldg:FCU_OA_CFM ,
+                        bldg:FCU_OA_HUMD ,
+                        bldg:FCU_RAT ,
+                        bldg:FCU_RA_HUMD .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CLG_EWT
+bldg:FCU_CLG_EWT rdf:type owl:NamedIndividual ,
+                          brick:Entering_Water_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CLG_GPM
+bldg:FCU_CLG_GPM rdf:type owl:NamedIndividual ,
+                          brick:Chilled_Water_Supply_Flow_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CLG_RWT
+bldg:FCU_CLG_RWT rdf:type owl:NamedIndividual ,
+                          brick:Leaving_Water_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CTRL
+bldg:FCU_CTRL rdf:type owl:NamedIndividual ,
+                       brick:Mode_Command .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CVLV
+bldg:FCU_CVLV rdf:type owl:NamedIndividual ,
+                       brick:Valve_Position_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_CVLV_DM
+bldg:FCU_CVLV_DM rdf:type owl:NamedIndividual ,
+                          brick:Valve_Command .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_DAT
+bldg:FCU_DAT rdf:type owl:NamedIndividual ,
+                      brick:Discharge_Air_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_DA_CFM
+bldg:FCU_DA_CFM rdf:type owl:NamedIndividual ,
+                         brick:Discharge_Air_Flow_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_DA_HUMD
+bldg:FCU_DA_HUMD rdf:type owl:NamedIndividual ,
+                          brick:Discharge_Air_Humidity_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_DMPR
+bldg:FCU_DMPR rdf:type owl:NamedIndividual ,
+                       brick:Damper_Position_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_DMPR_DM
+bldg:FCU_DMPR_DM rdf:type owl:NamedIndividual ,
+                          brick:Damper_Position_Command .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_HTG_EWT
+bldg:FCU_HTG_EWT rdf:type owl:NamedIndividual ,
+                          brick:Entering_Water_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_HTG_GPM
+bldg:FCU_HTG_GPM rdf:type owl:NamedIndividual ,
+                          brick:Hot_Water_Supply_Flow_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_HTG_RWT
+bldg:FCU_HTG_RWT rdf:type owl:NamedIndividual ,
+                          brick:Leaving_Water_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_HVLV
+bldg:FCU_HVLV rdf:type owl:NamedIndividual ,
+                       brick:Valve_Position_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_HVLV_DM
+bldg:FCU_HVLV_DM rdf:type owl:NamedIndividual ,
+                          brick:Valve_Command .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_MAT
+bldg:FCU_MAT rdf:type owl:NamedIndividual ,
+                      brick:Mixed_Air_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_MA_HUMD
+bldg:FCU_MA_HUMD rdf:type owl:NamedIndividual ,
+                          brick:Mixed_Air_Humidity_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_OAT
+bldg:FCU_OAT rdf:type owl:NamedIndividual ,
+                      brick:Outside_Air_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_OA_CFM
+bldg:FCU_OA_CFM rdf:type owl:NamedIndividual ,
+                         brick:Outside_Air_Flow_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_OA_HUMD
+bldg:FCU_OA_HUMD rdf:type owl:NamedIndividual ,
+                          brick:Outside_Air_Humidity_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_RAT
+bldg:FCU_RAT rdf:type owl:NamedIndividual ,
+                      brick:Return_Air_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_RA_HUMD
+bldg:FCU_RA_HUMD rdf:type owl:NamedIndividual ,
+                          brick:Return_Air_Humidity_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_SPD
+bldg:FCU_SPD rdf:type owl:NamedIndividual ,
+                      brick:Speed_Status .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#FCU_WAT
+bldg:FCU_WAT rdf:type owl:NamedIndividual ,
+                      brick:Electricial_Meter .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#Heating_coil
+bldg:Heating_coil rdf:type owl:NamedIndividual ,
+                           brick:Hot_Water_Coil ;
+                  brick:hasPoint bldg:FCU_HTG_EWT ,
+                                 bldg:FCU_HTG_GPM ,
+                                 bldg:FCU_HTG_RWT ,
+                                 bldg:FCU_HVLV ,
+                                 bldg:FCU_HVLV_DM .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#Outdoor_air_damper
+bldg:Outdoor_air_damper rdf:type owl:NamedIndividual ,
+                                 brick:Outside_Damper ;
+                        brick:hasPoint bldg:FCU_DMPR ,
+                                       bldg:FCU_DMPR_DM .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#RMCLGSPT
+bldg:RMCLGSPT rdf:type owl:NamedIndividual ,
+                       brick:Zone_Air_Cooling_Temperature_Setpoint .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#RMHTGSPT
+bldg:RMHTGSPT rdf:type owl:NamedIndividual ,
+                       brick:Zone_Air_Heating_Temperature_Setpoint .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#RM_TEMP
+bldg:RM_TEMP rdf:type owl:NamedIndividual ,
+                      brick:Zone_Air_Temperature_Sensor .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#Supply_air_fan
+bldg:Supply_air_fan rdf:type owl:NamedIndividual ,
+                             brick:Fan ;
+                    brick:hasPoint bldg:FAN_CTRL ,
+                                   bldg:FCU_SPD ,
+                                   bldg:FCU_WAT .
+
+
+###  file:/C:/Users/Azad/Desktop/LBNL_Data/bldg-59#Zone
+bldg:Zone rdf:type owl:NamedIndividual ,
+                   brick:Zone ;
+          brick:hasPoint bldg:RMCLGSPT ,
+                         bldg:RMHTGSPT ,
+                         bldg:RM_TEMP .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#Stuck
+<http://www.co-ode.org/ontologies/ont.owl#Stuck> rdf:type owl:NamedIndividual ,
+                                                          <http://www.co-ode.org/ontologies/ont.owl#Fault> .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
